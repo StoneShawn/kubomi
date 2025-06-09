@@ -132,3 +132,10 @@ echo "📄 JSON（分類）：$REPORT_DIR/structured_tree.json"
 echo "🌐 HTML 報告：$REPORT_DIR/html/index.html"
 echo "📦 歸檔 JSON：$ARCHIVE_PATH"
 echo "📦 歸檔 PACKAGE JSON：$ARCHIVE_WEB_PATH"
+
+
+# 存入firebase
+echo "📂 存入firebase..."
+python3 ./code_coverage/upload_to_firestore.py \
+  "./code_coverage/coverage-archive-web/${VARIANT_UNDERSCORE}/${VERSION}.json" \
+  "app" "android" "version" "${VERSION}"
