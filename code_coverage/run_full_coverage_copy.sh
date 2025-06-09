@@ -3,6 +3,11 @@
 VARIANT=$1
 FILTER_INLINED=${3:-false}
 
+# SDK 路徑設定，根據你的環境調整
+if [ ! -f local.properties ]; then
+  echo "sdk.dir=/Users/shiyixiang/Library/Android/sdk" > local.properties
+fi
+
 if [ -z "$VARIANT" ]; then
   echo "❌ 用法： ./run_full_coverage.sh <module> <BuildVariant> [<filterInlined>]"
   exit 1
