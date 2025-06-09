@@ -13,3 +13,5 @@
 .externalNativeBuild
 .cxx
 local.properties
+/code_coverage/serviceAccountKey.json
+/serviceAccountKey.json
