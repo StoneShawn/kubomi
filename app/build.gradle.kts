@@ -1,4 +1,5 @@
 plugins {
+    id("jacoco") // ✅ 加入 Jacoco Plugin
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
 }
@@ -44,6 +45,19 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+    tasks.register<JacocoReport>("jacocoTestReport") {
+//        dependsOn("testDebugUnitTest") // or testStgDebugUnitTest
+
+        reports {
+            xml.required.set(true)
+            html.required.set(true)
+        }
+
+//        classDirectories.setFrom(fileTree("${buildDir}/tmp/kotlin-classes/debug"))
+//        sourceDirectories.setFrom(files("src/main/java"))
+//        executionData.setFrom(files("${buildDir}/jacoco/testDebugUnitTest.exec"))
+    }
+
 }
 
 dependencies {
