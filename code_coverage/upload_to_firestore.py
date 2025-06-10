@@ -6,7 +6,8 @@ import sys
 def upload_nested_json(json_path, top_collection, top_doc, sub_collection, sub_doc):
     # 初始化 Firebase（只初始化一次）
     if not firebase_admin._apps:
-        firebase_admin.initialize_app()
+        cred = credentials.Certificate("/Users/Shared/jenkins/secrets/serviceAccountKey.json")
+        firebase_admin.initialize_app(cred)
 
     db = firestore.client()
 
