@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.shawn.kubomi.ui.theme.KubomiTheme
+import kotlinx.coroutines.delay
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,6 +26,17 @@ class MainActivity : ComponentActivity() {
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
+            }
+        }
+
+
+
+        suspend fun loginApi(email: String, password: String): String {
+            delay(1000L)
+            if (email == "test@example.com" && password == "1234") {
+                return "Jerry"
+            } else {
+                throw Exception("帳號或密碼錯誤")
             }
         }
     }
